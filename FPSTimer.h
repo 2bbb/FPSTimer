@@ -34,7 +34,7 @@ public:
         us_per_frame_ = getTargetIntervalMicros();
     }
 
-    size_t getTargetIntervalMicros()
+    size_t getTargetIntervalMicros() const
     {
         return 1000000 / fps_;
     }
@@ -58,14 +58,14 @@ public:
 
     void setCurrentFrame(int32_t frame) { curr_frame_ = frame; }
 
-    size_t getCurrentLagUs() { return us_lag_; }
-    int32_t getCurrentFrame() { return curr_frame_; }
-    float getFrameRate() { return 1000000. / (float)us_lag_previous_; }
-    size_t getCurrentFrameTimeUs() { return us_lag_previous_; }
-    float getCurrentFrameTimeF() { return (float)us_lag_previous_ * 0.000001; }
-    double getCurrentFrameTimeD() { return (double)us_lag_previous_ * 0.000001; }
+    size_t getCurrentLagUs() const { return us_lag_; }
+    int32_t getCurrentFrame() const { return curr_frame_; }
+    float getFrameRate() const { return 1000000.0f / (float)us_lag_previous_; }
+    size_t getCurrentFrameTimeUs() const { return us_lag_previous_; }
+    float getCurrentFrameTimeF() const { return (float)us_lag_previous_ * 0.000001f; }
+    double getCurrentFrameTimeD() const { return (double)us_lag_previous_ * 0.000001; }
 
-    bool isFinished() { return is_finished_; }
+    bool isFinished() const { return is_finished_; }
 
 private:
 
